@@ -16,7 +16,6 @@ public class Branch {
     @JoinColumn(name = "employee_id")
     private Set<Employee> employees;
     @OneToMany
-    @JoinColumn(name = "car_id")
     private Set<Car> cars;
 
     public Branch(String address, Set<Employee> employees, Set<Car> cars) {
