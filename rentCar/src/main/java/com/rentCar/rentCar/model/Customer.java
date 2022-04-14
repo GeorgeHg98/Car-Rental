@@ -17,18 +17,29 @@ public class Customer {
     private String name;
     @Column(name = "email")
     private String email;
+    @Column
+    private String password;
     @Column(name = "address")
     private String address;
 
-    public Customer(String firstName, String name, String email, String address) {
+    public Customer(String firstName, String name, String email, String password, String address) {
         this.firstName = firstName;
         this.name = name;
         this.email = email;
+        this.password = password;
         this.address = address;
     }
 
     public Customer() {
 
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getId() {

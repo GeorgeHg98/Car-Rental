@@ -12,6 +12,8 @@ public interface CarRepository extends PagingAndSortingRepository<Car, Integer> 
 
     Optional<Car> findCarByBrandAndModel(String brand, String model);
 
+
+
 //    Optional<Car> findById(Integer id);
 
 //    void saveAllCars(List<Car> listOfCars);

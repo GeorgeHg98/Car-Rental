@@ -3,7 +3,7 @@ package com.rentCar.rentCar.dto.carDto;
 import javax.validation.constraints.NotBlank;
 
 public class CarCreateDto {
-@NotBlank(message = "Brand name is required !")
+    @NotBlank(message = "Brand name is required !")
     private String brand;
     @NotBlank(message = "Model is required !")
     private String model;

@@ -2,10 +2,12 @@ package com.rentCar.rentCar.mapper;
 
 import com.rentCar.rentCar.dto.customerDto.CustomerCreateDto;
 import com.rentCar.rentCar.dto.customerDto.CustomerFullDto;
+import com.rentCar.rentCar.dto.customerDto.CustomerLoginDto;
 import com.rentCar.rentCar.dto.customerDto.CustomerResponseDto;
 import com.rentCar.rentCar.model.Customer;
 
 public class CustomerMapper {
+
     public static Customer customerToEntity(CustomerCreateDto customerCreateDto) {
         Customer customer = new Customer();
         customer.setName(customerCreateDto.getName());
@@ -37,4 +39,5 @@ public class CustomerMapper {
         return customerFullDto;
 
     }
+
 }

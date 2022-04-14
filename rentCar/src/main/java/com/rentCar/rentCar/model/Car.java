@@ -19,18 +19,16 @@ public class Car {
     private String colour;
     @Column(name = "mileage")
     private Integer mileage;
-    @Column(name = "availability")
-    private boolean isBooked;
     @Column(name = "amount")
     private double amount;
 
-    public Car(String brand, String model, String bodyType, String colour, Integer mileage, boolean isBooked, double amount) {
+    public Car(String brand, String model, String bodyType, String colour, Integer mileage, double amount) {
         this.brand = brand;
         this.model = model;
         this.bodyType = bodyType;
         this.colour = colour;
         this.mileage = mileage;
-        this.isBooked = isBooked;
+
         this.amount = amount;
     }
 
@@ -86,13 +84,6 @@ public class Car {
         this.mileage = mileage;
     }
 
-    public boolean isBooked() {
-        return isBooked;
-    }
-
-    public void setBooked(boolean booked) {
-        isBooked = booked;
-    }
 
     public double getAmount() {
         return amount;
@@ -111,7 +102,6 @@ public class Car {
                 ", bodyType='" + bodyType + '\'' +
                 ", colour='" + colour + '\'' +
                 ", mileage=" + mileage +
-                ", isBooked=" + isBooked +
                 ", amount=" + amount +
                 '}';
     }

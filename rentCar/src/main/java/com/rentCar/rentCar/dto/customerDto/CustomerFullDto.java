@@ -9,7 +9,13 @@ public class CustomerFullDto {
 
     private String email;
 
+    private String password;
+
     private String address;
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public int getId() {
         return id;
@@ -49,5 +55,9 @@ public class CustomerFullDto {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+
+    public String getPassword() {return password;
     }
 }

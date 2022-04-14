@@ -41,7 +41,6 @@ public class CustomFakerCar {
                 car.setBodyType(bodyType.get((int)(Math.random()*10)%4));
                 car.setColour(faker.color().name());
                 car.setMileage(faker.number().numberBetween(1000,200000));
-                car.setBooked(faker.bool().bool());
                 car.setAmount(faker.number().numberBetween(100,500));
 
                 carList.add(car);
