@@ -1,6 +1,5 @@
 package com.rentCar.rentCar.dto.customerDto;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 
 public class CustomerCreateDto {

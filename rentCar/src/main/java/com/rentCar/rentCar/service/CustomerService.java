@@ -5,21 +5,17 @@ import com.rentCar.rentCar.dto.customerDto.CustomerFullDto;
 import com.rentCar.rentCar.dto.customerDto.CustomerLoginDto;
 import com.rentCar.rentCar.dto.customerDto.CustomerResponseDto;
 
-import com.rentCar.rentCar.exceptions.EmailAddressAlreadyUsedException;
-import com.rentCar.rentCar.exceptions.InvalidEmailAddressException;
 import com.rentCar.rentCar.model.Customer;
 
 import java.util.List;
 
 public interface CustomerService {
-    CustomerResponseDto create(CustomerCreateDto customerCreateDto);
 
-    Customer toEntity(CustomerFullDto loginDTO);
+    CustomerFullDto login(CustomerLoginDto customerLoginDto);
 
-    Customer toEntity(CustomerLoginDto loginDTO);
+    List<CustomerFullDto> findAll(Integer pageNumber, Integer pageSize, String sortBy);
 
-    //TODO
-    CustomerFullDto signUp(CustomerLoginDto loginDTO) throws InvalidEmailAddressException, EmailAddressAlreadyUsedException;
+    void saveAllCustomers(List<Customer> listOfCustomers);
 
     CustomerFullDto findCustomerByName(String name);
 
@@ -29,9 +25,13 @@ public interface CustomerService {
 
     CustomerFullDto findCustomerByEmail(String email);
 
-    CustomerFullDto login(CustomerLoginDto customerLoginDto);
+    CustomerResponseDto create(CustomerCreateDto customerCreateDto);
 
-    List<CustomerFullDto> findAll(Integer pageNumber, Integer pageSize, String sortBy);
+    Customer toEntity(CustomerFullDto loginDTO);
 
-    void saveAllCustomers(List<Customer> listOfCustomers);
+    Customer toEntity(CustomerLoginDto loginDTO);
+
+
+
+
 }

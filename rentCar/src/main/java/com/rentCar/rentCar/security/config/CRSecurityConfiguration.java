@@ -17,7 +17,7 @@ public class CRSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public CRSecurityConfiguration(CRUserDetailsService crUserDetailsService){
         this.crUserDetailsService = crUserDetailsService;
     }
-   //unde e autentificarea
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
@@ -27,6 +27,7 @@ public class CRSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and().formLogin()
                 .and().httpBasic();
+
 
     }
 

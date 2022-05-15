@@ -25,7 +25,7 @@ public class CRUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return "123";
+        return customer.getPassword();
     }
 
     @Override

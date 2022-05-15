@@ -1,6 +1,6 @@
 package com.rentCar.rentCar.dto.carDto;
 
-import javax.persistence.Column;
+
 
 public class CarFullDto {
     private int id;

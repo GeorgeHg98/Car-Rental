@@ -20,17 +20,10 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    @Value("${user.validation.email-regex}")
-    private String emailRegex = "^(.+)@gmail\\.com";
-
     private final CustomerRepository customerRepository;
-
-    private CustomerMapper customerMapper;
-
     public CustomerServiceImpl(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
@@ -53,6 +46,12 @@ public class CustomerServiceImpl implements CustomerService {
                 null
         );
     }
+    @Override
+    public CustomerFullDto findCustomerByFirstName(String firstName) {
+        Customer customer = customerRepository.findCustomerByFirstName(firstName).orElseThrow(() ->
+                new CustomerException("Customer with first name: " + firstName + " is not found!"));
+        return CustomerMapper.customerToFullDto(customer);
+    }
 
     @Override
     public Customer toEntity(CustomerLoginDto loginDTO) {
@@ -60,21 +59,21 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
 
-    @Override
-    public CustomerFullDto signUp(CustomerLoginDto loginDTO) throws InvalidEmailAddressException, EmailAddressAlreadyUsedException {
-        if (!isValidEmail(loginDTO.getEmail())) {
-            throw new InvalidEmailAddressException(loginDTO.getEmail());
-        }
-        if (customerRepository.existsByEmail(loginDTO.getEmail())) {
-            throw new EmailAddressAlreadyUsedException(loginDTO.getEmail());
-        }
-        Customer customer = customerRepository.save(toEntity(loginDTO));
-        return CustomerMapper.customerToFullDto(customer);
-    }
+//    @Override
+//    public CustomerFullDto signUp(CustomerLoginDto loginDTO) throws InvalidEmailAddressException, EmailAddressAlreadyUsedException {
+//        if (!isValidEmail(loginDTO.getEmail())) {
+//            throw new InvalidEmailAddressException(loginDTO.getEmail());
+//        }
+//        if (customerRepository.existsByEmail(loginDTO.getEmail())) {
+//            throw new EmailAddressAlreadyUsedException(loginDTO.getEmail());
+//        }
+//        Customer customer = customerRepository.save(toEntity(loginDTO));
+//        return CustomerMapper.customerToFullDto(customer);
+//    }
 
-    private boolean isValidEmail(String email) {
-        return email != null && email.matches(emailRegex);
-    }
+//    private boolean isValidEmail(String email) {
+//        return email != null && email.matches(emailRegex);
+//    }
 
     //TODO
     @Override
@@ -91,12 +90,7 @@ public class CustomerServiceImpl implements CustomerService {
         return CustomerMapper.customerToFullDto(customer);
     }
 
-    @Override
-    public CustomerFullDto findCustomerByFirstName(String firstName) {
-        Customer customer = customerRepository.findCustomerByFirstName(firstName).orElseThrow(() ->
-                new CustomerException("Customer with first name: " + firstName + " is not found!"));
-        return CustomerMapper.customerToFullDto(customer);
-    }
+
 
     @Override
     public CustomerFullDto findCustomerByEmail(String email) {

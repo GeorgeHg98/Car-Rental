@@ -34,11 +34,10 @@ public class BookingServiceImpl implements BookingService {
         boolean isCarAvailable = true;
         for (Car c : availableCars) {
             for (Booking b : allBookings) {
-                // start date = 5 si end date = 20
-                // exista o rezervare din 1 pana in 27
+
                 if ((startDate.before(b.getStartDate()) && endDate.before(b.getStartDate())) ||
                         (startDate.after(b.getEndDate()) && endDate.after(b.getEndDate()))) {
-                    // do nothing - car is no reserved under this reservation
+
                 } else {
                     isCarAvailable = false;
                 }
@@ -54,13 +53,10 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public BookingDto create(BookingDto bookingDto) {
 
-        // check if the car is available at those dates
         List<Booking> allBookings = repository.findAll();
 
         boolean isCarAvailable = true;
         for (Booking b : allBookings) {
-            // 1 complet inainte
-            // 2 complet dupa
             if ((bookingDto.startDate.before(b.getStartDate()) && bookingDto.endDate.before(b.getStartDate())) ||
                     (bookingDto.startDate.after(b.getEndDate()) && bookingDto.endDate.after(b.getEndDate()))) {
 

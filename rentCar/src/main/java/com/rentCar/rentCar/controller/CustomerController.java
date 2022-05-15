@@ -23,10 +23,10 @@ CustomerService customerService;
         return new ResponseEntity<>(customerService.findAll(1,500,"Id"), HttpStatus.OK);
     }
 
-   @PostMapping("/signup")
-    public ResponseEntity<CustomerFullDto> signup(@RequestBody CustomerLoginDto loginDto){
-        return new ResponseEntity<>(customerService.signUp(loginDto), HttpStatus.OK);
-    }
+//   @PostMapping("/signup")
+//    public ResponseEntity<CustomerFullDto> signup(@RequestBody CustomerLoginDto loginDto){
+//        return new ResponseEntity<>(customerService.signUp(loginDto), HttpStatus.OK);
+//    }
 
     @PostMapping("/login")
     public ResponseEntity<CustomerFullDto> login(@RequestBody CustomerLoginDto loginDto){
